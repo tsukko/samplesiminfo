@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             requestPermissions(arrayOf(Manifest.permission.READ_PHONE_STATE), PERMISSIONS_REQUEST_CODE)
         }
 
-        MobileAds.initialize(this, getString(R.string.admob_app_id))
+        MobileAds.initialize(this, BuildConfig.admob_app_id)
         val adRequest: AdRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
 

@@ -15,13 +15,16 @@ android {
     }
     buildTypes {
         debug {
-//            applicationIdSuffix ".debug"
-            debuggable true
+            manifestPlaceholders = [admob_app_id: project.property("admobAppIdDeub")]
+            buildConfigField("String", "admob_app_id", "\"{$admobAppIdDeub}\"")
+            resValue "string", "ad_unit_id", "$admobUnitIdforDebug"
         }
         release {
-            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [admob_app_id: project.property("admobAppIdRelease")]
+            buildConfigField("String", "admob_app_id", "\"{$admobAppIdRelease}\"")
+            resValue "string", "ad_unit_id", "$admobUnitIdforRelease"
         }
     }
     flavorDimensions "default"

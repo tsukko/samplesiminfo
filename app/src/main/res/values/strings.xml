@@ -18,8 +18,4 @@
     <string name="simOperatorName">simOperatorName</string>
     <string name="simStateLabel">SIM状態</string>
     <string name="simState">simState</string>
-
-    <!-- User test ID. -->
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
