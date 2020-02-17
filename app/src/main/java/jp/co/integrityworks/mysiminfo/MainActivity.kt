@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
@@ -107,9 +108,14 @@ class MainActivity : AppCompatActivity() {
         //SIM国別コード
         simCountryIso.text = telMgr.simCountryIso
         //SIMシリアルナンバー
-        simSerialNumber.text = telMgr.simSerialNumber
         // 携帯端末固有ID
-        deviceId.text = telMgr.deviceId
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            simSerialNumber.text = "not support at OS 10"
+            deviceId.text = "not support at OS 10"
+        } else {
+            simSerialNumber.text = telMgr.simSerialNumber
+            deviceId.text = telMgr.deviceId
+        }
         //AndroidIDの取得
         androidId.text = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
         // MCC+MNC
