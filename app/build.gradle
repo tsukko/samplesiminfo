@@ -42,8 +42,6 @@ android {
         production {
             dimension "default"
         }
-        free {}
-        paid {}
     }
 
     // Test周り
