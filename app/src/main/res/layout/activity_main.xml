@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="Phone Number"
+        android:text="@string/phoneNumberLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="SIM国別コード"
+        android:text="@string/simCountryIsoLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="SIMシリアルナンバー"
+        android:text="@string/simSerialNumberLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="携帯端末固有(deviceId)"
+        android:text="@string/deviceIdLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="Android ID"
+        android:text="@string/androidIdLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="MCC+MNC"
+        android:text="@string/simOperatorLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="サービスプロバイダ名"
+        android:text="@string/simOperatorNameLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="SIM状態"
+        android:text="@string/simStateLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:text="phoneNumber"
+        android:text="@string/phoneNumber"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
@@ -106,7 +106,7 @@
         android:id="@+id/simCountryIso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="simCountryIso"
+        android:text="@string/simCountryIso"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView1" />
 
@@ -114,7 +114,7 @@
         android:id="@+id/simSerialNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="simSerialNumber"
+        android:text="@string/simSerialNumber"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
@@ -123,7 +123,7 @@
         android:id="@+id/deviceId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="deviceId"
+        android:text="@string/deviceId"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
@@ -131,7 +131,7 @@
         android:id="@+id/androidId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="androidId"
+        android:text="@string/androidId"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
@@ -139,7 +139,7 @@
         android:id="@+id/simOperator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="simOperator"
+        android:text="@string/simOperator"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
@@ -147,7 +147,7 @@
         android:id="@+id/simOperatorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="simOperatorName"
+        android:text="@string/simOperatorName"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
@@ -155,7 +155,7 @@
         android:id="@+id/simState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="simState"
+        android:text="@string/simState"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
@@ -163,7 +163,19 @@
         android:id="@+id/voiceMailNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="voiceMailNumber"
+        android:text="@string/voiceMailNumber"
         app:layout_constraintStart_toStartOf="@+id/phoneNumber"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/ad_unit_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

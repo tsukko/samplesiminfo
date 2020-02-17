@@ -4,18 +4,28 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import android.util.Log
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.reward.RewardedVideoAd
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     private val PERMISSIONS_REQUEST_CODE = 100
+    private val mAd: RewardedVideoAd? = null
+    // A menu item view type.
+    private val MENU_ITEM_VIEW_TYPE = 0
+
+    // The unified native ad view type.
+    private val UNIFIED_NATIVE_AD_VIEW_TYPE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +38,34 @@ class MainActivity : AppCompatActivity() {
         } else {
             // 許可されていないので許可ダイアログを表示する
             requestPermissions(arrayOf(Manifest.permission.READ_PHONE_STATE), PERMISSIONS_REQUEST_CODE)
+        }
+
+        MobileAds.initialize(this, getString(R.string.admob_app_id))
+        val adRequest: AdRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        // ad's lifecycle: loading, opening, closing, and so on
+        // ad's lifecycle: loading, opening, closing, and so on
+        adView.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                Log.d("debug", "Code to be executed when an ad finishes loading.")
+            }
+
+            override fun onAdFailedToLoad(errorCode: Int) {
+                Log.d("debug", "Code to be executed when an ad request fails.")
+            }
+
+            override fun onAdOpened() {
+                Log.d("debug", "Code to be executed when an ad opens an overlay that covers the screen.")
+            }
+
+            override fun onAdLeftApplication() {
+                Log.d("debug", "Code to be executed when the user has left the app.")
+            }
+
+            override fun onAdClosed() {
+                Log.d("debug", "Code to be executed when when the user is about to return to the app after tapping on an ad.")
+            }
         }
     }
 
