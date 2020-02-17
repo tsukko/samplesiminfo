@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 29
@@ -13,9 +14,50 @@ android {
         versionName "1.2"
     }
     buildTypes {
+        debug {
+//            applicationIdSuffix ".debug"
+            debuggable true
+        }
         release {
+            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        development {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            versionNameSuffix ".dev"
+        }
+        staging {
+            dimension "default"
+            applicationIdSuffix ".stg"
+            versionNameSuffix ".stg"
+        }
+        production {
+            dimension "default"
+        }
+        free {}
+        paid {}
+    }
+
+    // Test周り
+    sourceSets {
+        test.java.srcDirs += 'src/test/java'
+        androidTest.java.srcDirs += 'src/androidTest/java'
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+            all {
+                jacoco {
+                    includeNoLocationClasses = true
+                }
+            }
         }
     }
 }
@@ -24,10 +66,25 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.1.0'
-    testImplementation 'junit:junit:4.12'
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // AdMob
     implementation 'com.google.android.gms:play-services-ads:18.3.0'
+
+    // Test周り
+    testImplementation 'androidx.test:core:1.2.0'
+    testImplementation 'androidx.test:runner:1.2.0'
+    testImplementation 'androidx.test:rules:1.2.0'
+    testImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'androidx.test.ext:truth:1.2.0'
+    testImplementation 'com.google.truth:truth:0.42'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
 }
 repositories {
     mavenCentral()
+}
+jacoco {
+    toolVersion = "0.8.4"
+}
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
 }
