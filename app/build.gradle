@@ -10,8 +10,14 @@ android {
         applicationId "jp.co.integrityworks.mysiminfo"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 5
+        versionCode 6
         versionName "1.2"
+    }
+
+    signingConfigs {
+        release {
+            //TODO
+        }
     }
     buildTypes {
         debug {
@@ -20,6 +26,7 @@ android {
             resValue "string", "ad_unit_id", "$admobUnitIdforDebug"
         }
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [admob_app_id: project.property("admobAppIdRelease")]
@@ -27,6 +34,7 @@ android {
             resValue "string", "ad_unit_id", "$admobUnitIdforRelease"
         }
     }
+
     flavorDimensions "default"
     productFlavors {
         development {
