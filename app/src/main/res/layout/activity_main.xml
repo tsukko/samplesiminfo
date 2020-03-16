@@ -1,181 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="jp.co.integrityworks.mysiminfo.MainActivity">
+    xmlns:bind="http://schemas.android.com/tools">
 
+    <data>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/phoneNumberLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="telViewModel"
+            type="jp.co.integrityworks.mysiminfo.TelViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/simCountryIsoLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#333333">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/simSerialNumberLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/adView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/deviceIdLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/androidIdLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.line1Number}"
+                    bind:title="@{@string/phoneNumberLabel}" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/simOperatorLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.simCountryIso}"
+                    bind:title="@{@string/simCountryIsoLabel}" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/simOperatorNameLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.simSerialNumber}"
+                    bind:title="@{@string/simSerialNumberLabel}" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="@string/simStateLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.deviceId}"
+                    bind:title="@{@string/deviceIdLabel}" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:text="ボイスメールナンバー"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.androidId}"
+                    bind:title="@{@string/androidIdLabel}" />
 
-    <TextView
-        android:id="@+id/phoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:text="@string/phoneNumber"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+                <include
+                    layout="@layout/content_sub"
 
-    <TextView
-        android:id="@+id/simCountryIso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/simCountryIso"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView1" />
+                    bind:telData="@{telViewModel.simOperator}"
+                    bind:title="@{@string/simOperatorLabel}" />
 
-    <TextView
-        android:id="@+id/simSerialNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/simSerialNumber"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.simOperatorName}"
+                    bind:title="@{@string/simOperatorNameLabel}" />
 
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.simState}"
+                    bind:title="@{@string/simStateLabel}" />
 
-    <TextView
-        android:id="@+id/deviceId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/deviceId"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+                <include
+                    layout="@layout/content_sub"
+                    bind:telData="@{telViewModel.voiceMailNumber}"
+                    bind:title="@{@string/voiceMailNumberLabel}" />
 
-    <TextView
-        android:id="@+id/androidId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/androidId"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+            </LinearLayout>
+        </ScrollView>
 
-    <TextView
-        android:id="@+id/simOperator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/simOperator"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/simOperatorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/simOperatorName"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/simState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/simState"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/voiceMailNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/voiceMailNumber"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/ad_unit_id"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:adSize="SMART_BANNER"
+            app:adUnitId="@string/ad_unit_id" />
+    </RelativeLayout>
+</layout>

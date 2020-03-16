@@ -1,21 +1,13 @@
 <resources>
     <string name="app_name">MySIMInfo</string>
     <string name="title_activity_sub">SubActivity</string>
-    <string name="voiceMailNumber">voiceMailNumber</string>
+    <string name="voiceMailNumberLabel">voiceMailNumber</string>
     <string name="phoneNumberLabel">Phone Number</string>
-    <string name="phoneNumber">phoneNumber</string>
     <string name="simCountryIsoLabel">SIM国別コード</string>
-    <string name="simCountryIso">simCountryIso</string>
     <string name="simSerialNumberLabel">SIMシリアルナンバー</string>
-    <string name="simSerialNumber">simSerialNumber</string>
     <string name="deviceIdLabel">携帯端末固有(deviceId)</string>
-    <string name="deviceId">deviceId</string>
     <string name="androidIdLabel">Android ID</string>
-    <string name="androidId">androidId</string>
     <string name="simOperatorLabel">MCC+MNC</string>
-    <string name="simOperator">simOperator</string>
     <string name="simOperatorNameLabel">サービスプロバイダ名</string>
-    <string name="simOperatorName">simOperatorName</string>
     <string name="simStateLabel">SIM状態</string>
-    <string name="simState">simState</string>
 </resources>
