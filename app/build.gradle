@@ -16,7 +16,7 @@ android {
         applicationId "jp.co.integrityworks.mysiminfo"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 8
+        versionCode 9
         versionName "1.3"
     }
 
