@@ -7,10 +7,18 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import jp.co.integrityworks.mysiminfo.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
+    }
+
     private val PERMISSIONS_REQUEST_CODE = 100
     private var binding: ActivityMainBinding? = null
     //    private val mAd: RewardedVideoAd? = null
@@ -18,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Logger.debug(javaClass.simpleName, "onCreate")
+        supportActionBar?.title =
+            if (BuildConfig.DEBUG) getString(R.string.app_name) + " (deb)" else getString(R.string.app_name)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding?.lifecycleOwner = this
@@ -36,38 +46,38 @@ class MainActivity : AppCompatActivity() {
 
         binding?.telViewModel = viewModel
 
-//        MobileAds.initialize(this, BuildConfig.admob_app_id)
-//        val adRequest: AdRequest = AdRequest.Builder().build()
-//        adView.loadAd(adRequest)
-//
-//        // ad's lifecycle: loading, opening, closing, and so on
-//        adView.adListener = object : AdListener() {
-//            override fun onAdLoaded() {
-//                Log.d("debug", "Code to be executed when an ad finishes loading.")
-//            }
-//
-//            override fun onAdFailedToLoad(errorCode: Int) {
-//                Log.d("debug", "Code to be executed when an ad request fails.")
-//            }
-//
-//            override fun onAdOpened() {
-//                Log.d(
-//                    "debug",
-//                    "Code to be executed when an ad opens an overlay that covers the screen."
-//                )
-//            }
-//
-//            override fun onAdLeftApplication() {
-//                Log.d("debug", "Code to be executed when the user has left the app.")
-//            }
-//
-//            override fun onAdClosed() {
-//                Log.d(
-//                    "debug",
-//                    "Code to be executed when when the user is about to return to the app after tapping on an ad."
-//                )
-//            }
-//        }
+        MobileAds.initialize(this, BuildConfig.admob_app_id)
+        val adRequest: AdRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        // ad's lifecycle: loading, opening, closing, and so on
+        adView.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                Logger.debug(TAG, "Code to be executed when an ad finishes loading.")
+            }
+
+            override fun onAdFailedToLoad(errorCode: Int) {
+                Logger.debug(TAG, "Code to be executed when an ad request fails.")
+            }
+
+            override fun onAdOpened() {
+                Logger.debug(
+                    TAG,
+                    "Code to be executed when an ad opens an overlay that covers the screen."
+                )
+            }
+
+            override fun onAdLeftApplication() {
+                Logger.debug(TAG, "Code to be executed when the user has left the app.")
+            }
+
+            override fun onAdClosed() {
+                Logger.debug(
+                    TAG,
+                    "Code to be executed when when the user is about to return to the app after tapping on an ad."
+                )
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(
