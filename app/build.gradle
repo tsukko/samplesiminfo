@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'jacoco-android'
+apply plugin: 'com.hiya.jacoco-android'
 apply plugin: 'kotlin-kapt'
 
 def keystoreProperties = new Properties()
@@ -10,22 +10,22 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "jp.co.integrityworks.mysiminfo"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 9
         versionName "1.3"
     }
 
     signingConfigs {
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storeFile file(keystoreProperties['storeFile'])
+//            storePassword keystoreProperties['storePassword']
         }
     }
     buildTypes {
@@ -81,27 +81,32 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.70"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0-alpha2'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
     // AdMob
-    implementation 'com.google.android.gms:play-services-ads:19.0.0'
+    implementation 'com.google.android.gms:play-services-ads:19.7.0'
 
     // Test周り
-    testImplementation 'androidx.test:core:1.2.0'
-    testImplementation 'androidx.test:runner:1.2.0'
-    testImplementation 'androidx.test:rules:1.2.0'
-    testImplementation 'androidx.test.ext:junit:1.1.1'
-    testImplementation 'androidx.test.ext:truth:1.2.0'
-    testImplementation 'com.google.truth:truth:0.42'
-    testImplementation 'junit:junit:4.13'
-    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'androidx.test:core:1.3.0'
+    testImplementation 'androidx.test:runner:1.3.0'
+    testImplementation 'androidx.test:rules:1.3.0'
+    testImplementation 'androidx.test.ext:junit:1.1.2'
+    testImplementation 'androidx.test.ext:truth:1.3.0'
+    testImplementation 'com.google.truth:truth:1.1.2'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.robolectric:robolectric:4.5.1'
 }
 repositories {
     mavenCentral()
