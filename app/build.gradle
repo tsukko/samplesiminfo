@@ -1,15 +1,18 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.hiya.jacoco-android'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.hiya.jacoco-android'
+    id 'kotlin-kapt'
+}
 
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('keystore.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
+
 android {
+    buildToolsVersion '30.0.3'
     compileSdkVersion 30
 
     defaultConfig {
@@ -28,6 +31,7 @@ android {
 //            storePassword keystoreProperties['storePassword']
         }
     }
+
     buildTypes {
         debug {
             manifestPlaceholders = [admob_app_id: project.property("admobAppIdDebug")]
@@ -61,6 +65,16 @@ android {
         }
     }
 
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
     // Test周り
     sourceSets {
         test.java.srcDirs += 'src/test/java'
@@ -69,23 +83,15 @@ android {
 
     testOptions {
         unitTests {
-            includeAndroidResources = true
-            returnDefaultValues = true
+            includeAndroidResources true
+            returnDefaultValues true
             all {
                 jacoco {
-                    includeNoLocationClasses = true
+                    includeNoLocationClasses true
                 }
             }
         }
     }
-    dataBinding {
-        enabled = true
-    }
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
-    buildToolsVersion '30.0.2'
 }
 
 dependencies {
