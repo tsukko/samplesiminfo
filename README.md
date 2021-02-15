@@ -20,7 +20,7 @@ copyright-free
 - Javaでリリース後、Kotlinに変換してリリースも試しました。
 - Google でアプリ署名鍵の管理、保護を行った場合のリリースを試しました。
 - AndroidX対応を試しました。
-- targetSdkVersion 29対応も試しました。
+- targetSdkVersion 30 対応も試しました。
 - AdMobの導入も試しました。（Test用IDを使用）
 
 # 追記したいこと

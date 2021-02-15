@@ -44,13 +44,13 @@ class TelViewModel : ViewModel() {
         //SIMシリアルナンバー
         // 携帯端末固有ID
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            _simSerialNumber.value = "not support at OS 10"
+            _simSerialNumber.value = "Not supported on iOS 10 or higher"
         } else {
             _simSerialNumber.value = telMgr.simSerialNumber
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            _deviceId.value = "not support at OS 10"
+            _deviceId.value = "Not supported on iOS 10 or higher"
         } else {
             _deviceId.value = telMgr.deviceId
         }
